@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { fetchWeddingDetails } from "@/modules/weddingDetails/redux/weddingDetailsSlice";
 import { AppDispatch } from "@/redux/store";
+import { router } from "expo-router";
 
 export default function Tab() {
   const insets = useSafeAreaInsets();
@@ -28,7 +29,10 @@ export default function Tab() {
     const fetchDetails = async () => {
       const token = await AsyncStorage.getItem("authToken");
       if (token) {
-        await dispatch(fetchWeddingDetails(token));
+        const response = await dispatch(fetchWeddingDetails(token));
+        if (fetchWeddingDetails.rejected.match(response)) {
+          router.navigate("/onboardingScreen");
+        }
       }
     };
 
