@@ -173,15 +173,6 @@ export default function OnboardingScreen() {
   const handleSubmit = async () => {
     setLoading(true);
 
-    console.log(
-      "Submitting wedding details:",
-      JSON.stringify({
-        ...formData,
-        weddingDate: formData.weddingDate.toISOString().split("T")[0],
-        time: formData.time.toISOString().split("T")[1].split(".")[0],
-      })
-    );
-
     try {
       const token = await AsyncStorage.getItem("authToken");
       const response = await fetch(

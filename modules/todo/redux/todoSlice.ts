@@ -102,9 +102,7 @@ export const todoSlice = createSlice({
       return state.filter((todo) => todo.id !== action.payload);
     },
     setDueDate: (state, action) => {
-      console.log("setDueDate", action.payload);
       const todo = state.find((todo) => todo.id === action.payload.id);
-      console.log("todo", todo);
       if (todo) {
         todo.dueDate = action.payload.dueDate;
       }
