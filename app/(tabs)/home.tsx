@@ -15,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { fetchWeddingDetails } from "@/modules/weddingDetails/redux/weddingDetailsSlice";
 import { AppDispatch } from "@/redux/store";
 import { router } from "expo-router";
+import { fetchTodos } from "@/modules/todo/redux/todoSlice";
 
 export default function Tab() {
   const insets = useSafeAreaInsets();
@@ -37,6 +38,17 @@ export default function Tab() {
     };
 
     fetchDetails();
+  }, [dispatch]);
+
+  useEffect(() => {
+    const fetchChecklist = async () => {
+      const token = await AsyncStorage.getItem("authToken");
+      if (token) {
+        await dispatch(fetchTodos(token));
+      }
+    };
+
+    fetchChecklist();
   }, [dispatch]);
 
   return (
