@@ -16,14 +16,26 @@ import {
 import { router } from "expo-router";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { fetchTodos } from "@/modules/todo/redux/todoSlice";
 import { AppDispatch } from "@/redux/store";
+import { fetchGuests } from "@/modules/guests/redux/guestsSlice";
 
 export default function Tab() {
   const totalBudget = useSelector(selectTotalBudget);
   const totalSpent = useSelector(selectTotalSpent);
   const totalGuests = useSelector(selectAllGuests)?.length;
   const totalConfirmedGuests = useSelector(selectAllConfirmedGuests)?.length;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    const fetchChecklist = async () => {
+      const token = await AsyncStorage.getItem("authToken");
+      if (token) {
+        await dispatch(fetchGuests(token));
+      }
+    };
+
+    fetchChecklist();
+  }, [dispatch]);
 
   return (
     <Screen showBackButton={false}>

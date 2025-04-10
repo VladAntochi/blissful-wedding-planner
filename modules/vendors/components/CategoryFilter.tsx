@@ -43,12 +43,12 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
 const styles = StyleSheet.create({
   scrollViewContainer: {
     backgroundColor: "white",
-    maxHeight: 56, // prevents the ScrollView from getting too tall
+    maxHeight: 56,
     marginHorizontal: -16,
   },
   categoryContent: {
     flexDirection: "row",
-    alignItems: "center", // make sure buttons align vertically
+    alignItems: "center",
   },
   categoryButton: {
     paddingHorizontal: 16,
