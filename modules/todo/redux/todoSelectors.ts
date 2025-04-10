@@ -6,7 +6,14 @@ export const selectTodoState = (state: RootState) => state.todo;
 export const selectAllTodos = (state: RootState): ToDoItem[] => state.todo;
 export const selectAllToDosWithDueDate = createSelector(
   [selectTodoState],
-  (todos): ToDoItem[] => todos.filter((todo) => !!todo.dueDate)
+  (todos): ToDoItem[] =>
+    todos
+      .filter((todo) => !!todo.dueDate)
+      .sort((a, b) => {
+        const dateA = new Date(a.dueDate ?? "");
+        const dateB = new Date(b.dueDate ?? "");
+        return dateA.getTime() - dateB.getTime();
+      })
 );
 export const selectCompletedTodos = (state: RootState) =>
   state.todo.filter((todo) => todo.completed);
