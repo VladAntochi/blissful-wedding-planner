@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Animated, ImageBackground } from "react-native";
+import { StyleSheet, Animated, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -55,15 +55,7 @@ export default function LoadingScreen() {
       source={require("../assets/images/background-splash.png")}
       style={styles.backgroundImage}
       blurRadius={3}
-    >
-      <View style={styles.logoContainer}>
-        <Animated.Image
-          source={require("../assets/images/infinity-logo.png")}
-          style={[styles.logo, { opacity: fadeAnim }]}
-          resizeMode="contain"
-        />
-      </View>
-    </ImageBackground>
+    />
   );
 }
 

@@ -19,4 +19,4 @@ export const capitalizeFirstLetter = (word: string) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-export const baseUrl = "http://192.168.1.69:3000";
+export const baseUrl = "http://wedding-planner-api-production.up.railway.app";

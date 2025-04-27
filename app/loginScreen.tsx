@@ -91,12 +91,6 @@ export default function LoginScreen() {
           resizeMode="cover"
         >
           <View style={styles.overlay} />
-          <View style={styles.logoContainer}>
-            <Image
-              source={require("../assets/images/infinity-logo.png")}
-              style={styles.logo}
-            />
-          </View>
         </ImageBackground>
 
         <View style={styles.formContainer}>

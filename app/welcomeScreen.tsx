@@ -34,12 +34,6 @@ export default function WelcomeScreen() {
       style={styles.backgroundImage}
       blurRadius={3}
     >
-      <View style={styles.logoContainer}>
-        <Image
-          source={require("../assets/images/infinity-logo.png")}
-          style={styles.logo}
-        />
-      </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
           activeOpacity={0.8}
