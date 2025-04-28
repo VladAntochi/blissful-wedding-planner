@@ -83,7 +83,7 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       state.push({
-        id: uuid.v4().toString(),
+        id: action.payload.id,
         title: action.payload.title,
         dueDate: action.payload.dueDate,
         completed: false,
